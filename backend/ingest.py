@@ -3,76 +3,73 @@ import json
 import re
 
 
-# -----------------------------
-# Configuration
-# -----------------------------
-
 RAW_DATA_DIR = Path("data/raw")
 PROCESSED_DATA_DIR = Path("data/processed")
 
-CHUNK_SIZE = 500
-CHUNK_OVERLAP = 100
+OUTPUT_FILE = PROCESSED_DATA_DIR / "chunks.json"
 
-
-# -----------------------------
-# Text cleaning
-# -----------------------------
 
 def clean_text(text: str) -> str:
-    """
-    Clean unnecessary whitespace from extracted text.
-    """
+    """Clean unnecessary whitespace."""
+
     text = text.replace("\r\n", "\n")
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n{3,}", "\n\n", text)
+
+    text = re.sub(
+        r"[ \t]+",
+        " ",
+        text
+    )
+
+    text = re.sub(
+        r"\n{3,}",
+        "\n\n",
+        text
+    )
 
     return text.strip()
 
 
-# -----------------------------
-# Chunking
-# -----------------------------
-
-def create_chunks(text: str):
+def create_error_chunks(text: str, file_path: Path):
     """
-    Split text into overlapping chunks.
+    Create one chunk for each documented error.
 
-    Each chunk overlaps with the previous chunk
-    so that important information near chunk
-    boundaries is not completely lost.
+    The document uses error names as section headings.
     """
 
-    words = text.split()
+    # Find sections beginning with known error names
+    pattern = r"(?m)^(ModuleNotFoundError|NameError|TypeError|IndexError|KeyError)\s*$"
+
+    matches = list(re.finditer(pattern, text))
 
     chunks = []
 
-    start = 0
-    chunk_id = 0
+    for i, match in enumerate(matches):
 
-    while start < len(words):
+        start = match.start()
 
-        end = min(start + CHUNK_SIZE, len(words))
+        if i + 1 < len(matches):
+            end = matches[i + 1].start()
+        else:
+            end = len(text)
 
-        chunk_words = words[start:end]
+        section = text[start:end].strip()
 
-        chunk_text = " ".join(chunk_words)
+        error_name = match.group(1)
 
         chunks.append({
-            "chunk_id": chunk_id,
-            "text": chunk_text
+            "chunk_id": len(chunks),
+            "text": section,
+            "metadata": {
+                "source": file_path.name,
+                "file_type": file_path.suffix,
+                "document_path": str(file_path),
+                "technology": "Python",
+                "error_type": error_name
+            }
         })
-
-        chunk_id += 1
-
-        # Move forward while keeping overlap
-        start += CHUNK_SIZE - CHUNK_OVERLAP
 
     return chunks
 
-
-# -----------------------------
-# Process documents
-# -----------------------------
 
 def process_document(file_path: Path):
 
@@ -84,28 +81,17 @@ def process_document(file_path: Path):
 
     text = clean_text(text)
 
-    chunks = create_chunks(text)
+    chunks = create_error_chunks(
+        text,
+        file_path
+    )
 
-    processed_chunks = []
+    print(
+        f"Created {len(chunks)} meaningful chunks."
+    )
 
-    for chunk in chunks:
+    return chunks
 
-        processed_chunks.append({
-            "chunk_id": chunk["chunk_id"],
-            "text": chunk["text"],
-            "metadata": {
-                "source": file_path.name,
-                "file_type": file_path.suffix,
-                "document_path": str(file_path)
-            }
-        })
-
-    return processed_chunks
-
-
-# -----------------------------
-# Main
-# -----------------------------
 
 def main():
 
@@ -116,24 +102,28 @@ def main():
 
     all_chunks = []
 
-    files = list(RAW_DATA_DIR.glob("*.txt"))
+    files = list(
+        RAW_DATA_DIR.glob("*.txt")
+    )
 
     if not files:
-        print("No documents found in data/raw/")
+
+        print(
+            "No .txt documents found in data/raw/"
+        )
+
         return
 
     for file_path in files:
 
-        chunks = process_document(file_path)
+        chunks = process_document(
+            file_path
+        )
 
         all_chunks.extend(chunks)
 
-    output_file = (
-        PROCESSED_DATA_DIR / "chunks.json"
-    )
-
     with open(
-        output_file,
+        OUTPUT_FILE,
         "w",
         encoding="utf-8"
     ) as file:
@@ -145,12 +135,18 @@ def main():
             ensure_ascii=False
         )
 
-    print("\n-----------------------------")
-    print("Document processing complete!")
-    print(f"Documents processed: {len(files)}")
-    print(f"Total chunks: {len(all_chunks)}")
-    print(f"Saved to: {output_file}")
-    print("-----------------------------")
+    print("\n==============================")
+    print("INGESTION COMPLETE")
+    print("==============================")
+    print(
+        f"Documents processed: {len(files)}"
+    )
+    print(
+        f"Total chunks: {len(all_chunks)}"
+    )
+    print(
+        f"Saved to: {OUTPUT_FILE}"
+    )
 
 
 if __name__ == "__main__":

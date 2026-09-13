@@ -1,0 +1,63 @@
+PYTHON ERROR TROUBLESHOOTING GUIDE
+
+ModuleNotFoundError
+
+Description:
+ModuleNotFoundError occurs when Python cannot find the module that a program is trying to import.
+
+Common Cause:
+The required package may not be installed in the Python environment currently being used.
+
+Troubleshooting:
+Check whether the required package is installed in the active Python environment.
+For example, if a program imports the requests package, verify that requests is installed in the environment.
+
+Another possible cause is that the program is being executed with a different Python interpreter or virtual environment from the one where the package was installed.
+
+NameError
+
+Description:
+NameError occurs when Python encounters a name that has not been defined.
+
+Common Cause:
+A variable, function, or other name may be misspelled or may not have been defined before it is used.
+
+Troubleshooting:
+Check the spelling of the variable or function name.
+Verify that the name has been defined before the line where it is used.
+
+TypeError
+
+Description:
+TypeError occurs when an operation or function is applied to an object of an inappropriate type.
+
+Common Cause:
+The program may be trying to perform an operation using incompatible data types.
+
+Troubleshooting:
+Check the types of the values involved in the operation.
+Verify that function arguments have the expected types.
+
+IndexError
+
+Description:
+IndexError occurs when a sequence is accessed using an index that is outside the valid range.
+
+Common Cause:
+The program may be trying to access an element at an index that does not exist.
+
+Troubleshooting:
+Check the length of the list or sequence.
+Make sure the index is within the valid range.
+
+KeyError
+
+Description:
+KeyError occurs when a dictionary is accessed using a key that does not exist in the dictionary.
+
+Common Cause:
+The requested key may be missing from the dictionary.
+
+Troubleshooting:
+Check whether the key exists before accessing it.
+Verify that the key is spelled correctly.

@@ -9,6 +9,14 @@ PROCESSED_DATA_DIR = Path("data/processed")
 OUTPUT_FILE = PROCESSED_DATA_DIR / "chunks.json"
 
 
+TECHNOLOGY_MAP = {
+    "python_errors.txt": "Python",
+    "java_errors.txt": "Java",
+    "javascript_errors.txt": "JavaScript/Node.js",
+    "docker_errors.txt": "Docker"
+}
+
+
 def clean_text(text: str) -> str:
     """Clean unnecessary whitespace."""
 
@@ -29,32 +37,44 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-def create_error_chunks(text: str, file_path: Path):
+def create_chunks(text: str, file_path: Path):
     """
-    Create one chunk for each documented error.
+    Split the document using blank-line-separated sections.
 
-    The document uses error names as section headings.
+    Each section contains one error and its supporting
+    information.
     """
 
-    # Find sections beginning with known error names
-    pattern = r"(?m)^(ModuleNotFoundError|NameError|TypeError|IndexError|KeyError)\s*$"
-
-    matches = list(re.finditer(pattern, text))
+    sections = re.split(
+        r"\n\s*\n",
+        text
+    )
 
     chunks = []
 
-    for i, match in enumerate(matches):
+    technology = TECHNOLOGY_MAP.get(
+        file_path.name,
+        "Unknown"
+    )
 
-        start = match.start()
+    for section in sections:
 
-        if i + 1 < len(matches):
-            end = matches[i + 1].start()
-        else:
-            end = len(text)
+        section = section.strip()
 
-        section = text[start:end].strip()
+        if not section:
+            continue
 
-        error_name = match.group(1)
+        lines = section.splitlines()
+
+        # Skip document title
+        if len(lines) < 2:
+            continue
+
+        error_type = lines[0].strip()
+
+        # Ignore the overall document title
+        if "TROUBLESHOOTING GUIDE" in error_type.upper():
+            continue
 
         chunks.append({
             "chunk_id": len(chunks),
@@ -63,8 +83,8 @@ def create_error_chunks(text: str, file_path: Path):
                 "source": file_path.name,
                 "file_type": file_path.suffix,
                 "document_path": str(file_path),
-                "technology": "Python",
-                "error_type": error_name
+                "technology": technology,
+                "error_type": error_type
             }
         })
 
@@ -81,13 +101,13 @@ def process_document(file_path: Path):
 
     text = clean_text(text)
 
-    chunks = create_error_chunks(
+    chunks = create_chunks(
         text,
         file_path
     )
 
     print(
-        f"Created {len(chunks)} meaningful chunks."
+        f"Created {len(chunks)} chunks."
     )
 
     return chunks
@@ -107,11 +127,9 @@ def main():
     )
 
     if not files:
-
         print(
             "No .txt documents found in data/raw/"
         )
-
         return
 
     for file_path in files:
@@ -121,6 +139,10 @@ def main():
         )
 
         all_chunks.extend(chunks)
+
+    # Give every chunk a globally unique ID
+    for i, chunk in enumerate(all_chunks):
+        chunk["chunk_id"] = i
 
     with open(
         OUTPUT_FILE,
@@ -138,12 +160,15 @@ def main():
     print("\n==============================")
     print("INGESTION COMPLETE")
     print("==============================")
+
     print(
         f"Documents processed: {len(files)}"
     )
+
     print(
         f"Total chunks: {len(all_chunks)}"
     )
+
     print(
         f"Saved to: {OUTPUT_FILE}"
     )

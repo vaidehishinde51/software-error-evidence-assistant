@@ -1,0 +1,53 @@
+DOCKER ERROR TROUBLESHOOTING GUIDE
+
+Permission denied
+
+Description:
+A permission denied error occurs when the Docker client or daemon does not have permission to access a required resource.
+
+Common Cause:
+The current user may not have the required permissions to communicate with the Docker daemon or access a file.
+
+Troubleshooting:
+Check the permissions associated with the resource.
+Verify that the Docker daemon is running.
+Check the Docker installation and user configuration.
+
+Port is already allocated
+
+Description:
+This error occurs when Docker attempts to publish a container port that is already being used by another process or container.
+
+Common Cause:
+Another application or container is already listening on the requested host port.
+
+Troubleshooting:
+Identify the process or container using the port.
+Stop the conflicting process or container if appropriate.
+Alternatively, configure the container to use a different host port.
+
+Cannot connect to the Docker daemon
+
+Description:
+This error occurs when the Docker client cannot communicate with the Docker daemon.
+
+Common Cause:
+The Docker daemon may not be running or the client may be configured to communicate with an unavailable daemon.
+
+Troubleshooting:
+Verify that the Docker daemon is running.
+Check the Docker installation.
+Verify the Docker client configuration and connection settings.
+
+No such file or directory
+
+Description:
+Docker may report this error when a referenced file or directory cannot be found.
+
+Common Cause:
+A path may be incorrect, a file may not exist, or a file may not be available in the expected build or container context.
+
+Troubleshooting:
+Verify that the referenced file exists.
+Check the path for spelling errors.
+Verify the build context and volume paths.

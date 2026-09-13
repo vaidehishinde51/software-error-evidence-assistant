@@ -1,0 +1,55 @@
+JAVA ERROR TROUBLESHOOTING GUIDE
+
+NullPointerException
+
+Description:
+NullPointerException occurs when an application attempts to use a reference that contains null in a way that requires an actual object.
+
+Common Cause:
+An object reference may not have been initialized or a method may have returned null.
+
+Troubleshooting:
+Identify which reference is null.
+Check where the reference is initialized.
+Verify whether a method can return null before using its result.
+Add appropriate null checks where required.
+
+ClassNotFoundException
+
+Description:
+ClassNotFoundException occurs when an application attempts to load a class by name but the class cannot be found.
+
+Common Cause:
+The required class may not be available on the application's classpath.
+
+Troubleshooting:
+Verify that the required dependency is present.
+Check the application's classpath.
+Verify the package and class name.
+Check whether the required dependency was included during compilation or execution.
+
+ArrayIndexOutOfBoundsException
+
+Description:
+ArrayIndexOutOfBoundsException occurs when code attempts to access an array using an index outside the valid range.
+
+Common Cause:
+The index may be negative or greater than or equal to the array length.
+
+Troubleshooting:
+Check the array length.
+Verify the index before accessing the array.
+Remember that Java array indexes begin at zero.
+
+NumberFormatException
+
+Description:
+NumberFormatException occurs when a string cannot be converted into the requested numeric type.
+
+Common Cause:
+The input string may contain characters or formatting that are not valid for the expected numeric representation.
+
+Troubleshooting:
+Inspect the input string.
+Verify that it contains a valid numeric representation.
+Handle invalid input before attempting conversion.

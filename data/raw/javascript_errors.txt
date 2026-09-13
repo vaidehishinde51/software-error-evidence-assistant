@@ -1,0 +1,54 @@
+JAVASCRIPT AND NODE.JS ERROR TROUBLESHOOTING GUIDE
+
+MODULE_NOT_FOUND
+
+Description:
+MODULE_NOT_FOUND occurs when Node.js cannot locate a module that an application is attempting to load.
+
+Common Cause:
+The required package may not be installed, the module path may be incorrect, or the application may be running from an unexpected directory.
+
+Troubleshooting:
+Check that the required package is installed.
+Verify the module name and import path.
+Check the current project directory.
+If the package is a dependency, verify that it is listed in package.json and installed.
+
+TypeError
+
+Description:
+TypeError occurs when a JavaScript operation is performed on a value of an inappropriate type.
+
+Common Cause:
+A variable may contain an unexpected value such as null or undefined, or an operation may not be valid for the value's type.
+
+Troubleshooting:
+Inspect the value and its type before performing the operation.
+Check whether the value is null or undefined.
+Verify that function arguments have the expected types.
+
+ReferenceError
+
+Description:
+ReferenceError occurs when JavaScript attempts to access a variable or identifier that is not available in the current scope.
+
+Common Cause:
+The variable may not have been declared, may be misspelled, or may be outside the current scope.
+
+Troubleshooting:
+Check the spelling of the identifier.
+Verify that the variable has been declared.
+Check the scope in which the variable is being accessed.
+
+SyntaxError
+
+Description:
+SyntaxError occurs when JavaScript code does not follow the language syntax expected by the parser.
+
+Common Cause:
+The code may contain a missing bracket, parenthesis, quotation mark, or another syntax problem.
+
+Troubleshooting:
+Inspect the line identified by the error.
+Check brackets, parentheses, and quotation marks.
+Verify that the surrounding code follows valid JavaScript syntax.

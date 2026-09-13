@@ -5,19 +5,14 @@ import faiss
 from sentence_transformers import SentenceTransformer
 
 
-# --------------------------------
-# Configuration
-# --------------------------------
-
 INDEX_FILE = Path("vectorstore/faiss.index")
 METADATA_FILE = Path("vectorstore/metadata.json")
 
 MODEL_NAME = "all-MiniLM-L6-v2"
 
+# Minimum similarity required for evidence
+SIMILARITY_THRESHOLD = 0.45
 
-# --------------------------------
-# Retriever
-# --------------------------------
 
 class Retriever:
 
@@ -48,29 +43,21 @@ class Retriever:
         )
 
 
-    # --------------------------------
-    # Search
-    # --------------------------------
-
     def search(self, query, top_k=3):
 
-        # Convert query into embedding
         query_embedding = self.model.encode(
             [query],
             convert_to_numpy=True
         )
 
-        # FAISS expects float32
         query_embedding = query_embedding.astype(
             "float32"
         )
 
-        # Normalize for cosine similarity
         faiss.normalize_L2(
             query_embedding
         )
 
-        # Search FAISS
         scores, indices = self.index.search(
             query_embedding,
             top_k
@@ -83,24 +70,25 @@ class Retriever:
             indices[0]
         ):
 
-            # -1 means no result
             if index == -1:
+                continue
+
+            score = float(score)
+
+            # Ignore weak matches
+            if score < SIMILARITY_THRESHOLD:
                 continue
 
             chunk = self.metadata[index]
 
             results.append({
-                "score": float(score),
+                "score": score,
                 "text": chunk["text"],
                 "metadata": chunk["metadata"]
             })
 
         return results
 
-
-# --------------------------------
-# Test retriever
-# --------------------------------
 
 def main():
 
@@ -119,6 +107,14 @@ def main():
     print("RETRIEVED EVIDENCE")
     print("==============================")
 
+    if not results:
+
+        print(
+            "No sufficiently relevant evidence found."
+        )
+
+        return
+
     for i, result in enumerate(
         results,
         start=1
@@ -134,17 +130,22 @@ def main():
         )
 
         print(
+            f"Technology: "
+            f"{result['metadata']['technology']}"
+        )
+
+        print(
+            f"Error Type: "
+            f"{result['metadata']['error_type']}"
+        )
+
+        print(
             f"Source: "
             f"{result['metadata']['source']}"
         )
 
-        print(
-            "\nText:"
-        )
-
-        print(
-            result["text"]
-        )
+        print("\nText:")
+        print(result["text"])
 
 
 if __name__ == "__main__":

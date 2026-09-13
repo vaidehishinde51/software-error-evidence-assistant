@@ -18,44 +18,69 @@ TECHNOLOGY_MAP = {
 
 
 def clean_text(text: str) -> str:
-    """Clean unnecessary whitespace."""
+    """Normalize whitespace without destroying line structure."""
 
     text = text.replace("\r\n", "\n")
+    text = text.replace("\r", "\n")
 
-    text = re.sub(
-        r"[ \t]+",
-        " ",
-        text
-    )
+    text = re.sub(r"[ \t]+", " ", text)
 
-    text = re.sub(
-        r"\n{3,}",
-        "\n\n",
-        text
-    )
+    text = re.sub(r"\n{3,}", "\n\n", text)
 
     return text.strip()
 
 
 def create_chunks(text: str, file_path: Path):
     """
-    Split the document using blank-line-separated sections.
+    Create one complete chunk for each error.
 
-    Each section contains one error and its supporting
-    information.
+    Expected structure:
+
+    ERROR NAME
+
+    Description:
+    ...
+
+    Common Cause:
+    ...
+
+    Troubleshooting:
+    ...
     """
-
-    sections = re.split(
-        r"\n\s*\n",
-        text
-    )
-
-    chunks = []
 
     technology = TECHNOLOGY_MAP.get(
         file_path.name,
         "Unknown"
     )
+
+    # Split at blank lines before "Description:"
+    #
+    # Example:
+    #
+    # MODULE_NOT_FOUND
+    #
+    # Description:
+    # ...
+    #
+    # Common Cause:
+    # ...
+    #
+    # Troubleshooting:
+    # ...
+    #
+    # NULL_ERROR
+    #
+    # Description:
+    # ...
+    #
+    # becomes two complete chunks.
+
+    sections = re.split(
+        r"\n(?=[A-Za-z][A-Za-z0-9_ /.-]*\n\nDescription:)",
+        text
+    )
+
+    chunks = []
 
     for section in sections:
 
@@ -66,14 +91,17 @@ def create_chunks(text: str, file_path: Path):
 
         lines = section.splitlines()
 
-        # Skip document title
         if len(lines) < 2:
             continue
 
         error_type = lines[0].strip()
 
-        # Ignore the overall document title
+        # Ignore document title
         if "TROUBLESHOOTING GUIDE" in error_type.upper():
+            continue
+
+        # Ignore malformed sections
+        if "Description:" not in section:
             continue
 
         chunks.append({
@@ -127,9 +155,11 @@ def main():
     )
 
     if not files:
+
         print(
             "No .txt documents found in data/raw/"
         )
+
         return
 
     for file_path in files:
@@ -140,8 +170,9 @@ def main():
 
         all_chunks.extend(chunks)
 
-    # Give every chunk a globally unique ID
+    # Assign globally unique IDs
     for i, chunk in enumerate(all_chunks):
+
         chunk["chunk_id"] = i
 
     with open(

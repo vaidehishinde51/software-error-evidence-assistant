@@ -1,563 +1,189 @@
 [
   {
     "chunk_id": 0,
-    "text": "Description:\nA permission denied error occurs when the Docker client or daemon does not have permission to access a required resource.",
+    "text": "Permission denied\n\nDescription:\nA permission denied error occurs when the Docker client or daemon does not have permission to access a required resource.\n\nCommon Cause:\nThe current user may not have the required permissions to communicate with the Docker daemon or access a file.\n\nTroubleshooting:\nCheck the permissions associated with the resource.\nVerify that the Docker daemon is running.\nCheck the Docker installation and user configuration.",
     "metadata": {
       "source": "docker_errors.txt",
       "file_type": ".txt",
       "document_path": "data\\raw\\docker_errors.txt",
       "technology": "Docker",
-      "error_type": "Description:"
+      "error_type": "Permission denied"
     }
   },
   {
     "chunk_id": 1,
-    "text": "Common Cause:\nThe current user may not have the required permissions to communicate with the Docker daemon or access a file.",
+    "text": "Port is already allocated\n\nDescription:\nThis error occurs when Docker attempts to publish a container port that is already being used by another process or container.\n\nCommon Cause:\nAnother application or container is already listening on the requested host port.\n\nTroubleshooting:\nIdentify the process or container using the port.\nStop the conflicting process or container if appropriate.\nAlternatively, configure the container to use a different host port.",
     "metadata": {
       "source": "docker_errors.txt",
       "file_type": ".txt",
       "document_path": "data\\raw\\docker_errors.txt",
       "technology": "Docker",
-      "error_type": "Common Cause:"
+      "error_type": "Port is already allocated"
     }
   },
   {
     "chunk_id": 2,
-    "text": "Troubleshooting:\nCheck the permissions associated with the resource.\nVerify that the Docker daemon is running.\nCheck the Docker installation and user configuration.",
+    "text": "Cannot connect to the Docker daemon\n\nDescription:\nThis error occurs when the Docker client cannot communicate with the Docker daemon.\n\nCommon Cause:\nThe Docker daemon may not be running or the client may be configured to communicate with an unavailable daemon.\n\nTroubleshooting:\nVerify that the Docker daemon is running.\nCheck the Docker installation.\nVerify the Docker client configuration and connection settings.",
     "metadata": {
       "source": "docker_errors.txt",
       "file_type": ".txt",
       "document_path": "data\\raw\\docker_errors.txt",
       "technology": "Docker",
-      "error_type": "Troubleshooting:"
+      "error_type": "Cannot connect to the Docker daemon"
     }
   },
   {
     "chunk_id": 3,
-    "text": "Description:\nThis error occurs when Docker attempts to publish a container port that is already being used by another process or container.",
+    "text": "No such file or directory\n\nDescription:\nDocker may report this error when a referenced file or directory cannot be found.\n\nCommon Cause:\nA path may be incorrect, a file may not exist, or a file may not be available in the expected build or container context.\n\nTroubleshooting:\nVerify that the referenced file exists.\nCheck the path for spelling errors.\nVerify the build context and volume paths.",
     "metadata": {
       "source": "docker_errors.txt",
       "file_type": ".txt",
       "document_path": "data\\raw\\docker_errors.txt",
       "technology": "Docker",
-      "error_type": "Description:"
+      "error_type": "No such file or directory"
     }
   },
   {
     "chunk_id": 4,
-    "text": "Common Cause:\nAnother application or container is already listening on the requested host port.",
+    "text": "MODULE_NOT_FOUND\n\nDescription:\nMODULE_NOT_FOUND occurs when Node.js cannot locate a module that an application is attempting to load.\n\nCommon Cause:\nThe required package may not be installed, the module path may be incorrect, or the application may be running from an unexpected directory.\n\nTroubleshooting:\nCheck that the required package is installed.\nVerify the module name and import path.\nCheck the current project directory.\nIf the package is a dependency, verify that it is listed in package.json and installed.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "javascript_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Common Cause:"
+      "document_path": "data\\raw\\javascript_errors.txt",
+      "technology": "JavaScript/Node.js",
+      "error_type": "MODULE_NOT_FOUND"
     }
   },
   {
     "chunk_id": 5,
-    "text": "Troubleshooting:\nIdentify the process or container using the port.\nStop the conflicting process or container if appropriate.\nAlternatively, configure the container to use a different host port.",
+    "text": "TypeError\n\nDescription:\nTypeError occurs when a JavaScript operation is performed on a value of an inappropriate type.\n\nCommon Cause:\nA variable may contain an unexpected value such as null or undefined, or an operation may not be valid for the value's type.\n\nTroubleshooting:\nInspect the value and its type before performing the operation.\nCheck whether the value is null or undefined.\nVerify that function arguments have the expected types.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "javascript_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Troubleshooting:"
+      "document_path": "data\\raw\\javascript_errors.txt",
+      "technology": "JavaScript/Node.js",
+      "error_type": "TypeError"
     }
   },
   {
     "chunk_id": 6,
-    "text": "Description:\nThis error occurs when the Docker client cannot communicate with the Docker daemon.",
+    "text": "ReferenceError\n\nDescription:\nReferenceError occurs when JavaScript attempts to access a variable or identifier that is not available in the current scope.\n\nCommon Cause:\nThe variable may not have been declared, may be misspelled, or may be outside the current scope.\n\nTroubleshooting:\nCheck the spelling of the identifier.\nVerify that the variable has been declared.\nCheck the scope in which the variable is being accessed.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "javascript_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Description:"
+      "document_path": "data\\raw\\javascript_errors.txt",
+      "technology": "JavaScript/Node.js",
+      "error_type": "ReferenceError"
     }
   },
   {
     "chunk_id": 7,
-    "text": "Common Cause:\nThe Docker daemon may not be running or the client may be configured to communicate with an unavailable daemon.",
+    "text": "SyntaxError\n\nDescription:\nSyntaxError occurs when JavaScript code does not follow the language syntax expected by the parser.\n\nCommon Cause:\nThe code may contain a missing bracket, parenthesis, quotation mark, or another syntax problem.\n\nTroubleshooting:\nInspect the line identified by the error.\nCheck brackets, parentheses, and quotation marks.\nVerify that the surrounding code follows valid JavaScript syntax.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "javascript_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Common Cause:"
+      "document_path": "data\\raw\\javascript_errors.txt",
+      "technology": "JavaScript/Node.js",
+      "error_type": "SyntaxError"
     }
   },
   {
     "chunk_id": 8,
-    "text": "Troubleshooting:\nVerify that the Docker daemon is running.\nCheck the Docker installation.\nVerify the Docker client configuration and connection settings.",
+    "text": "NullPointerException\n\nDescription:\nNullPointerException occurs when an application attempts to use a reference that contains null in a way that requires an actual object.\n\nCommon Cause:\nAn object reference may not have been initialized or a method may have returned null.\n\nTroubleshooting:\nIdentify which reference is null.\nCheck where the reference is initialized.\nVerify whether a method can return null before using its result.\nAdd appropriate null checks where required.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "java_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Troubleshooting:"
+      "document_path": "data\\raw\\java_errors.txt",
+      "technology": "Java",
+      "error_type": "NullPointerException"
     }
   },
   {
     "chunk_id": 9,
-    "text": "Description:\nDocker may report this error when a referenced file or directory cannot be found.",
+    "text": "ClassNotFoundException\n\nDescription:\nClassNotFoundException occurs when an application attempts to load a class by name but the class cannot be found.\n\nCommon Cause:\nThe required class may not be available on the application's classpath.\n\nTroubleshooting:\nVerify that the required dependency is present.\nCheck the application's classpath.\nVerify the package and class name.\nCheck whether the required dependency was included during compilation or execution.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "java_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Description:"
+      "document_path": "data\\raw\\java_errors.txt",
+      "technology": "Java",
+      "error_type": "ClassNotFoundException"
     }
   },
   {
     "chunk_id": 10,
-    "text": "Common Cause:\nA path may be incorrect, a file may not exist, or a file may not be available in the expected build or container context.",
+    "text": "ArrayIndexOutOfBoundsException\n\nDescription:\nArrayIndexOutOfBoundsException occurs when code attempts to access an array using an index outside the valid range.\n\nCommon Cause:\nThe index may be negative or greater than or equal to the array length.\n\nTroubleshooting:\nCheck the array length.\nVerify the index before accessing the array.\nRemember that Java array indexes begin at zero.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "java_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Common Cause:"
+      "document_path": "data\\raw\\java_errors.txt",
+      "technology": "Java",
+      "error_type": "ArrayIndexOutOfBoundsException"
     }
   },
   {
     "chunk_id": 11,
-    "text": "Troubleshooting:\nVerify that the referenced file exists.\nCheck the path for spelling errors.\nVerify the build context and volume paths.",
+    "text": "NumberFormatException\n\nDescription:\nNumberFormatException occurs when a string cannot be converted into the requested numeric type.\n\nCommon Cause:\nThe input string may contain characters or formatting that are not valid for the expected numeric representation.\n\nTroubleshooting:\nInspect the input string.\nVerify that it contains a valid numeric representation.\nHandle invalid input before attempting conversion.",
     "metadata": {
-      "source": "docker_errors.txt",
+      "source": "java_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\docker_errors.txt",
-      "technology": "Docker",
-      "error_type": "Troubleshooting:"
+      "document_path": "data\\raw\\java_errors.txt",
+      "technology": "Java",
+      "error_type": "NumberFormatException"
     }
   },
   {
     "chunk_id": 12,
-    "text": "Description:\nMODULE_NOT_FOUND occurs when Node.js cannot locate a module that an application is attempting to load.",
+    "text": "ModuleNotFoundError\n\nDescription:\nModuleNotFoundError occurs when Python cannot find the module that a program is trying to import.\n\nCommon Cause:\nThe required package may not be installed in the Python environment currently being used.\n\nTroubleshooting:\nCheck whether the required package is installed in the active Python environment.\nFor example, if a program imports the requests package, verify that requests is installed in the environment.\n\nAnother possible cause is that the program is being executed with a different Python interpreter or virtual environment from the one where the package was installed.",
     "metadata": {
-      "source": "javascript_errors.txt",
+      "source": "python_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Description:"
+      "document_path": "data\\raw\\python_errors.txt",
+      "technology": "Python",
+      "error_type": "ModuleNotFoundError"
     }
   },
   {
     "chunk_id": 13,
-    "text": "Common Cause:\nThe required package may not be installed, the module path may be incorrect, or the application may be running from an unexpected directory.",
+    "text": "NameError\n\nDescription:\nNameError occurs when Python encounters a name that has not been defined.\n\nCommon Cause:\nA variable, function, or other name may be misspelled or may not have been defined before it is used.\n\nTroubleshooting:\nCheck the spelling of the variable or function name.\nVerify that the name has been defined before the line where it is used.",
     "metadata": {
-      "source": "javascript_errors.txt",
+      "source": "python_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Common Cause:"
+      "document_path": "data\\raw\\python_errors.txt",
+      "technology": "Python",
+      "error_type": "NameError"
     }
   },
   {
     "chunk_id": 14,
-    "text": "Troubleshooting:\nCheck that the required package is installed.\nVerify the module name and import path.\nCheck the current project directory.\nIf the package is a dependency, verify that it is listed in package.json and installed.",
+    "text": "TypeError\n\nDescription:\nTypeError occurs when an operation or function is applied to an object of an inappropriate type.\n\nCommon Cause:\nThe program may be trying to perform an operation using incompatible data types.\n\nTroubleshooting:\nCheck the types of the values involved in the operation.\nVerify that function arguments have the expected types.",
     "metadata": {
-      "source": "javascript_errors.txt",
+      "source": "python_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Troubleshooting:"
+      "document_path": "data\\raw\\python_errors.txt",
+      "technology": "Python",
+      "error_type": "TypeError"
     }
   },
   {
     "chunk_id": 15,
-    "text": "Description:\nTypeError occurs when a JavaScript operation is performed on a value of an inappropriate type.",
+    "text": "IndexError\n\nDescription:\nIndexError occurs when a sequence is accessed using an index that is outside the valid range.\n\nCommon Cause:\nThe program may be trying to access an element at an index that does not exist.\n\nTroubleshooting:\nCheck the length of the list or sequence.\nMake sure the index is within the valid range.",
     "metadata": {
-      "source": "javascript_errors.txt",
+      "source": "python_errors.txt",
       "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Description:"
+      "document_path": "data\\raw\\python_errors.txt",
+      "technology": "Python",
+      "error_type": "IndexError"
     }
   },
   {
     "chunk_id": 16,
-    "text": "Common Cause:\nA variable may contain an unexpected value such as null or undefined, or an operation may not be valid for the value's type.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 17,
-    "text": "Troubleshooting:\nInspect the value and its type before performing the operation.\nCheck whether the value is null or undefined.\nVerify that function arguments have the expected types.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 18,
-    "text": "Description:\nReferenceError occurs when JavaScript attempts to access a variable or identifier that is not available in the current scope.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 19,
-    "text": "Common Cause:\nThe variable may not have been declared, may be misspelled, or may be outside the current scope.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 20,
-    "text": "Troubleshooting:\nCheck the spelling of the identifier.\nVerify that the variable has been declared.\nCheck the scope in which the variable is being accessed.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 21,
-    "text": "Description:\nSyntaxError occurs when JavaScript code does not follow the language syntax expected by the parser.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 22,
-    "text": "Common Cause:\nThe code may contain a missing bracket, parenthesis, quotation mark, or another syntax problem.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 23,
-    "text": "Troubleshooting:\nInspect the line identified by the error.\nCheck brackets, parentheses, and quotation marks.\nVerify that the surrounding code follows valid JavaScript syntax.",
-    "metadata": {
-      "source": "javascript_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\javascript_errors.txt",
-      "technology": "JavaScript/Node.js",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 24,
-    "text": "Description:\nNullPointerException occurs when an application attempts to use a reference that contains null in a way that requires an actual object.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 25,
-    "text": "Common Cause:\nAn object reference may not have been initialized or a method may have returned null.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 26,
-    "text": "Troubleshooting:\nIdentify which reference is null.\nCheck where the reference is initialized.\nVerify whether a method can return null before using its result.\nAdd appropriate null checks where required.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 27,
-    "text": "Description:\nClassNotFoundException occurs when an application attempts to load a class by name but the class cannot be found.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 28,
-    "text": "Common Cause:\nThe required class may not be available on the application's classpath.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 29,
-    "text": "Troubleshooting:\nVerify that the required dependency is present.\nCheck the application's classpath.\nVerify the package and class name.\nCheck whether the required dependency was included during compilation or execution.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 30,
-    "text": "Description:\nArrayIndexOutOfBoundsException occurs when code attempts to access an array using an index outside the valid range.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 31,
-    "text": "Common Cause:\nThe index may be negative or greater than or equal to the array length.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 32,
-    "text": "Troubleshooting:\nCheck the array length.\nVerify the index before accessing the array.\nRemember that Java array indexes begin at zero.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 33,
-    "text": "Description:\nNumberFormatException occurs when a string cannot be converted into the requested numeric type.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 34,
-    "text": "Common Cause:\nThe input string may contain characters or formatting that are not valid for the expected numeric representation.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 35,
-    "text": "Troubleshooting:\nInspect the input string.\nVerify that it contains a valid numeric representation.\nHandle invalid input before attempting conversion.",
-    "metadata": {
-      "source": "java_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\java_errors.txt",
-      "technology": "Java",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 36,
-    "text": "Description:\nModuleNotFoundError occurs when Python cannot find the module that a program is trying to import.",
+    "text": "KeyError\n\nDescription:\nKeyError occurs when a dictionary is accessed using a key that does not exist in the dictionary.\n\nCommon Cause:\nThe requested key may be missing from the dictionary.\n\nTroubleshooting:\nCheck whether the key exists before accessing it.\nVerify that the key is spelled correctly.",
     "metadata": {
       "source": "python_errors.txt",
       "file_type": ".txt",
       "document_path": "data\\raw\\python_errors.txt",
       "technology": "Python",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 37,
-    "text": "Common Cause:\nThe required package may not be installed in the Python environment currently being used.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 38,
-    "text": "Troubleshooting:\nCheck whether the required package is installed in the active Python environment.\nFor example, if a program imports the requests package, verify that requests is installed in the environment.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 39,
-    "text": "Description:\nNameError occurs when Python encounters a name that has not been defined.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 40,
-    "text": "Common Cause:\nA variable, function, or other name may be misspelled or may not have been defined before it is used.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 41,
-    "text": "Troubleshooting:\nCheck the spelling of the variable or function name.\nVerify that the name has been defined before the line where it is used.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 42,
-    "text": "Description:\nTypeError occurs when an operation or function is applied to an object of an inappropriate type.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 43,
-    "text": "Common Cause:\nThe program may be trying to perform an operation using incompatible data types.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 44,
-    "text": "Troubleshooting:\nCheck the types of the values involved in the operation.\nVerify that function arguments have the expected types.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 45,
-    "text": "Description:\nIndexError occurs when a sequence is accessed using an index that is outside the valid range.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 46,
-    "text": "Common Cause:\nThe program may be trying to access an element at an index that does not exist.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 47,
-    "text": "Troubleshooting:\nCheck the length of the list or sequence.\nMake sure the index is within the valid range.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Troubleshooting:"
-    }
-  },
-  {
-    "chunk_id": 48,
-    "text": "Description:\nKeyError occurs when a dictionary is accessed using a key that does not exist in the dictionary.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Description:"
-    }
-  },
-  {
-    "chunk_id": 49,
-    "text": "Common Cause:\nThe requested key may be missing from the dictionary.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Common Cause:"
-    }
-  },
-  {
-    "chunk_id": 50,
-    "text": "Troubleshooting:\nCheck whether the key exists before accessing it.\nVerify that the key is spelled correctly.",
-    "metadata": {
-      "source": "python_errors.txt",
-      "file_type": ".txt",
-      "document_path": "data\\raw\\python_errors.txt",
-      "technology": "Python",
-      "error_type": "Troubleshooting:"
+      "error_type": "KeyError"
     }
   }
 ]

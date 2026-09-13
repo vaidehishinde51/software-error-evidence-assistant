@@ -7,6 +7,7 @@ MODEL_NAME = "llama3.2:latest"
 def generate_answer(query, evidence):
 
     if not evidence:
+
         return (
             "The available evidence is insufficient "
             "to answer this question reliably."
@@ -14,53 +15,69 @@ def generate_answer(query, evidence):
 
     context_parts = []
 
-    for i, result in enumerate(evidence, start=1):
-
-        source = result["metadata"]["source"]
-        error_type = result["metadata"]["error_type"]
-        technology = result["metadata"]["technology"]
-        text = result["text"]
+    for i, result in enumerate(
+        evidence,
+        start=1
+    ):
 
         context_parts.append(
             f"""
-Evidence {i}
-Technology: {technology}
-Error Type: {error_type}
-Source: {source}
+[EVIDENCE {i}]
+Source: {result["metadata"]["source"]}
+Technology: {result["metadata"]["technology"]}
+Error Type: {result["metadata"]["error_type"]}
 
-{text}
+{result["text"]}
 """
         )
 
     context = "\n".join(context_parts)
 
     prompt = f"""
-You are a software error troubleshooting assistant.
+You are a software troubleshooting assistant.
 
-Answer the user's question using ONLY the evidence
-provided below.
+You MUST answer using ONLY the evidence provided below.
 
 USER QUESTION:
 {query}
 
-RETRIEVED EVIDENCE:
+EVIDENCE:
 {context}
 
-RULES:
+STRICT RULES:
 
-1. Explain the likely cause using the retrieved evidence.
-2. Provide practical troubleshooting steps supported
-   by the evidence.
-3. Do not invent commands, causes, or solutions that
-   are not supported by the evidence.
-4. If you make an inference, clearly identify it as an
-   inference.
-5. If the evidence does not provide enough information,
-   say that the available evidence is insufficient.
-6. Mention the relevant source and error type.
-7. Keep the answer concise and useful.
+1. Do not use outside knowledge.
+2. Do not invent commands.
+3. Do not add troubleshooting steps that are not
+   explicitly supported by the evidence.
+4. Do not assume that a common solution is applicable.
+5. Every factual troubleshooting claim must be
+   supported by the evidence.
+6. If the evidence does not contain enough information,
+   state:
 
-Answer:
+   "The available evidence is insufficient to answer
+   this question reliably."
+
+7. Identify the relevant error type.
+8. Identify the source used.
+9. Keep the answer concise.
+
+ANSWER FORMAT:
+
+Error:
+<error type>
+
+Likely cause:
+<cause supported by evidence>
+
+Troubleshooting:
+<numbered steps supported by evidence>
+
+Evidence source:
+<source>
+
+Answer only from the supplied evidence.
 """
 
     response = ollama.chat(

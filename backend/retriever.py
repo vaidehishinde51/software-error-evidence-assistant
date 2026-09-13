@@ -11,9 +11,24 @@ METADATA_FILE = Path("vectorstore/metadata.json")
 MODEL_NAME = "all-MiniLM-L6-v2"
 
 # Minimum similarity required for evidence
-SIMILARITY_THRESHOLD = 0.45
+SIMILARITY_THRESHOLD = 0.50
 
+def get_confidence_label(score):
+    """Convert similarity score into a human-readable label."""
 
+    if score >= 0.90:
+        return "Very High"
+
+    if score >= 0.75:
+        return "High"
+
+    if score >= 0.60:
+        return "Moderate"
+
+    if score >= 0.45:
+        return "Low"
+
+    return "Insufficient"
 class Retriever:
 
     def __init__(self):
@@ -83,6 +98,7 @@ class Retriever:
 
             results.append({
                 "score": score,
+                "confidence": get_confidence_label(score),
                 "text": chunk["text"],
                 "metadata": chunk["metadata"]
             })
@@ -129,6 +145,10 @@ def main():
             f"{result['score']:.4f}"
         )
 
+        print(
+            f"Confidence: "
+            f"{result['confidence']}"
+)
         print(
             f"Technology: "
             f"{result['metadata']['technology']}"

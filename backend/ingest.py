@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import re
 
+from .document_loader import load_document
 
 RAW_DATA_DIR = Path("data/raw")
 PROCESSED_DATA_DIR = Path("data/processed")
@@ -123,8 +124,8 @@ def process_document(file_path: Path):
 
     print(f"\nProcessing: {file_path.name}")
 
-    text = file_path.read_text(
-        encoding="utf-8"
+    text = load_document(
+        file_path
     )
 
     text = clean_text(text)
@@ -150,8 +151,12 @@ def main():
 
     all_chunks = []
 
-    files = list(
-        RAW_DATA_DIR.glob("*.txt")
+    files = []
+
+    for extension in [".txt", ".md", ".pdf"]:
+
+        files.extend(
+        RAW_DATA_DIR.glob(f"*{extension}")
     )
 
     if not files:

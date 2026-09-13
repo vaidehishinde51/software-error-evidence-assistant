@@ -1,7 +1,26 @@
-.venv/
-venv/
+# Python
 __pycache__/
 *.py[cod]
-.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
 .vscode/
 .idea/
+
+# Environment variables
+.env
+
+# Generated data
+data/processed/
+vectorstore/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db

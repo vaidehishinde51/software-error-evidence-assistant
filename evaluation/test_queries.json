@@ -1,0 +1,47 @@
+[
+    {
+        "query": "Node.js cannot find a module",
+        "expected_error": "MODULE_NOT_FOUND",
+        "expected_technology": "JavaScript/Node.js"
+    },
+    {
+        "query": "Java object is null",
+        "expected_error": "NullPointerException",
+        "expected_technology": "Java"
+    },
+    {
+        "query": "Docker says the port is already being used",
+        "expected_error": "Port is already allocated",
+        "expected_technology": "Docker"
+    },
+    {
+        "query": "Python variable is not defined",
+        "expected_error": "NameError",
+        "expected_technology": "Python"
+    },
+    {
+        "query": "Python list index is out of range",
+        "expected_error": "IndexError",
+        "expected_technology": "Python"
+    },
+    {
+        "query": "Java class cannot be found",
+        "expected_error": "ClassNotFoundException",
+        "expected_technology": "Java"
+    },
+    {
+        "query": "Docker daemon cannot be reached",
+        "expected_error": "Cannot connect to the Docker daemon",
+        "expected_technology": "Docker"
+    },
+    {
+        "query": "JavaScript syntax is invalid",
+        "expected_error": "SyntaxError",
+        "expected_technology": "JavaScript/Node.js"
+    },
+    {
+        "query": "Kubernetes CrashLoopBackOff troubleshooting",
+        "expected_error": null,
+        "expected_technology": null
+    }
+]

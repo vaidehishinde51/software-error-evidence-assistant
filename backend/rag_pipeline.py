@@ -75,6 +75,11 @@ def main():
             f"{result['score']:.4f}"
         )
 
+        print(
+            f"Confidence: "
+            f"{result['confidence']}"
+        )
+
 
 if __name__ == "__main__":
     main()

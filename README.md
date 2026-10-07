@@ -1,4 +1,4 @@
-# 🔎 Software Error Evidence Assistant
+# errorLens- Software Error Evidence Assistant
 
 A local Retrieval-Augmented Generation (RAG) application that helps developers troubleshoot software errors using evidence retrieved from a technical knowledge base.
 
@@ -6,9 +6,7 @@ Instead of asking an LLM to answer a software troubleshooting question directly,
 
 The application is designed to reduce unsupported troubleshooting suggestions and make the evidence behind an answer transparent to the user.
 
----
-
-## 🎯 Problem Statement
+# Problem Statement
 
 Developers frequently encounter software errors such as:
 
@@ -23,7 +21,7 @@ Finding the correct solution often requires searching through documentation, Sta
 
 A conventional LLM chatbot can provide a plausible solution, but its response may not be grounded in a specific source.
 
-This project addresses that problem by building an **evidence-first software troubleshooting assistant**.
+This project addresses that problem by building an "evidence-first software troubleshooting assistant".
 
 The system:
 
@@ -34,31 +32,26 @@ The system:
 5. Generates a troubleshooting response grounded in that evidence.
 6. Shows the evidence and similarity scores to the user.
 
----
+# Features
 
-# ✨ Features
+- Semantic search for software errors
+- Local technical knowledge base
+- Document chunking
+- Sentence Transformer embeddings
+- FAISS vector similarity search
+- Local LLM inference using Ollama
+- Llama 3.2 support
+- Evidence-grounded responses
+- Similarity scores
+- Confidence labels
+- Source and error-type display
+- Handling of unsupported queries
+- Retrieval evaluation using Recall@3
+- Streamlit web interface
+- No paid APIs or subscriptions required for development
 
-- 🔍 Semantic search for software errors
-- 📚 Local technical knowledge base
-- 🧩 Document chunking
-- 🧠 Sentence Transformer embeddings
-- ⚡ FAISS vector similarity search
-- 🤖 Local LLM inference using Ollama
-- 🦙 Llama 3.2 support
-- 📌 Evidence-grounded responses
-- 📊 Similarity scores
-- 🏷️ Confidence labels
-- 📖 Source and error-type display
-- 🚫 Handling of unsupported queries
-- 🧪 Retrieval evaluation using Recall@3
-- 🌐 Streamlit web interface
-- 💰 No paid APIs or subscriptions required
+# System Architecture
 
----
-
-# 🏗️ System Architecture
-
-```text
                          USER
                            |
                            v
